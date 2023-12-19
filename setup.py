@@ -2,7 +2,7 @@ import setuptools
 
 from pathlib import Path
 
-INSTALL_REQUIRES = ['torch==1.13.0', 'timm==0.9.2']
+INSTALL_REQUIRES = ['torch>=1.7', 'timm==0.9.2']
 
 def get_version():
     locals_ = dict()
