@@ -1,0 +1,1 @@
+from nnspt.blocks.projectors.heads import SegmentationHead
