@@ -25,9 +25,11 @@ def test_ResNetEncoder_CASE_creation(name):
     IN_CHANNELS = 3
     DEPTH = 5
 
-    encoder = Encoder( name=name,
-                       in_channels=IN_CHANNELS,
-                       depth=DEPTH )
+    encoder = Encoder(
+        in_channels=IN_CHANNELS,
+        depth=DEPTH,
+        name=name
+    )
 
     assert len(encoder.out_channels) == DEPTH + 1
 

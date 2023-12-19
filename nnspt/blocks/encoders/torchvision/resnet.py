@@ -16,7 +16,7 @@ class ResNetEncoder(ResNet, EncoderBase):
                 out_channels (list of int): channel number of output tensors, including intermediate ones
                 depth (int): depth of encoder
         """
-        ResNet.__init__(self, **kwargs)
+        super().__init__(**kwargs)
 
         self.in_channels = 3
         self.out_channels_ = out_channels

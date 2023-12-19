@@ -2,7 +2,7 @@ import torch.nn as nn
 
 from collections import OrderedDict
 
-from nnspt.blocks.encoders.mics import __classinit
+from nnspt.blocks.encoders.misc import __classinit
 
 @__classinit
 class Convertor(object):

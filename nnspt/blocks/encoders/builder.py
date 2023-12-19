@@ -1,5 +1,5 @@
 from nnspt.blocks.encoders.torchvision import *
-from nnspt.blocks.encoders.mics import __classinit
+from nnspt.blocks.encoders.misc import __classinit
 
 nnspt_encoders = {}
 nnspt_encoders.update(resnet_encoders)
@@ -12,12 +12,12 @@ class Encoder(object):
     def _init__class(cls):
         return cls()
 
-    def __call__(self, name, in_channels=3, depth=5):
+    def __call__(self, in_channels=3, depth=5, name='resnet34'):
         """
             :args:
-                name (str): name of encoder to create
                 in_channels (int): number of channels of input tensor
                 depth (int): depth of encoder
+                name (str): name of encoder to create
 
             :return:
                 created encoder
