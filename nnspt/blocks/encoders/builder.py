@@ -1,3 +1,5 @@
+import torch, torch.nn as nn
+
 from nnspt.blocks.encoders.torchvision import *
 from nnspt.blocks.encoders.misc import __classinit
 
@@ -11,6 +13,26 @@ class Encoder(object):
     @classmethod
     def _init__class(cls):
         return cls()
+
+    @staticmethod
+    def _patch(encoder, in_channels, default_in_channels=3):
+        for node in encoder.modules():
+            if isinstance(node, nn.Conv1d) and node.in_channels == default_in_channels:
+                break
+
+        weight = node.weight.detach()
+        node.in_channels = in_channels
+
+        nweight = torch.Tensor(
+            node.out_channels,
+            in_channels // node.groups,
+            *node.kernel_size
+        )
+
+        for i in range(in_channels):
+            nweight[:, i] = weight[:, i % default_in_channels]
+
+        node.weight = nn.parameter.Parameter(nweight)
 
     def __call__(self, in_channels=3, depth=5, name='resnet34'):
         """
@@ -31,5 +53,6 @@ class Encoder(object):
         params.update(depth=depth)
 
         encoder = type(**params)
+        self._patch(encoder, in_channels)
 
         return encoder

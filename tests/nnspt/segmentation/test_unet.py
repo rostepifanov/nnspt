@@ -23,7 +23,7 @@ ENCODERS = [
 @pytest.mark.segmentation
 @pytest.mark.parametrize('name', ENCODERS)
 def test_Unet_CASE_creation(name):
-    IN_CHANNELS = 3
+    IN_CHANNELS = 12
     OUT_CHANNELS = 2
     DEPTH = 5
 
