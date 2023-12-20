@@ -21,6 +21,8 @@ class Encoder(object):
             if isinstance(node, nn.Conv1d) and node.in_channels == default_in_channels:
                 break
 
+        encoder.out_channels_ = (in_channels, *encoder.out_channels_[1:])
+
         weight = node.weight.detach()
         node.in_channels = in_channels
 
