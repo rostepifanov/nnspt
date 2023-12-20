@@ -17,6 +17,10 @@ ENCODERS = [
     'tv-resnext101_32x16d',
     'tv-resnext101_32x32d',
     'tv-resnext101_32x48d',
+    'tv-densenet121',
+    'tv-densenet169',
+    'tv-densenet201',
+    'tv-densenet161',
 ]
 
 @pytest.mark.unet

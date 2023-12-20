@@ -1,0 +1,36 @@
+import pytest
+
+import torch
+
+from nnspt.blocks.encoders import Encoder
+
+NAMES = [
+    'tv-densenet121',
+    'tv-densenet169',
+    'tv-densenet201',
+    'tv-densenet161',
+]
+
+@pytest.mark.densenet
+@pytest.mark.encoders
+@pytest.mark.parametrize('name', NAMES)
+def test_ResNetEncoder_CASE_creation(name):
+    IN_CHANNELS = 3
+    DEPTH = 5
+
+    encoder = Encoder(
+        in_channels=IN_CHANNELS,
+        depth=DEPTH,
+        name=name
+    )
+
+    assert len(encoder.out_channels) == DEPTH + 1
+
+    encoder.eval()
+
+    x = torch.randn(1, IN_CHANNELS, 64)
+    y = encoder(x)
+
+    for nchannels, yi in zip(encoder.out_channels, y):
+        assert yi.shape[0] == x.shape[0]
+        assert yi.shape[1] == nchannels

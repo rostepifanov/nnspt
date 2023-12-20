@@ -93,7 +93,7 @@ class Convertor1d(Convertor.__class__):
             'dilation': cls.__squeze_tuple(layer2d.dilation),
             'groups': layer2d.groups,
             'bias': 'bias' in layer2d.state_dict(),
-            'padding_mode': layer2d.padding_mode
+            'padding_mode': layer2d.padding_mode,
         }
 
         state2d = layer2d.state_dict()
@@ -124,7 +124,7 @@ class Convertor1d(Convertor.__class__):
             'padding': layer2d.padding,
             'dilation': layer2d.dilation,
             'return_indices': layer2d.return_indices,
-            'ceil_mode': layer2d.ceil_mode
+            'ceil_mode': layer2d.ceil_mode,
         }
 
         layer1d = nn.MaxPool1d(**kwargs)
@@ -139,7 +139,6 @@ class Convertor1d(Convertor.__class__):
             'padding': layer2d.padding,
             'ceil_mode': layer2d.ceil_mode,
             'count_include_pad': layer2d.count_include_pad,
-            'divisor_override': layer2d.divisor_override
         }
 
         layer1d = nn.AvgPool1d(**kwargs)
@@ -153,7 +152,7 @@ class Convertor1d(Convertor.__class__):
             'eps': layer2d.eps,
             'momentum': layer2d.momentum,
             'affine': layer2d.affine,
-            'track_running_stats': layer2d.track_running_stats
+            'track_running_stats': layer2d.track_running_stats,
         }
 
         layer1d = nn.BatchNorm1d(**kwargs)
