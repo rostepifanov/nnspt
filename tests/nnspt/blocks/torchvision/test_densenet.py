@@ -3,17 +3,13 @@ import pytest
 import torch
 
 from nnspt.blocks.encoders import Encoder
+from nnspt.blocks.encoders.torchvision import densenet_encoders
 
-NAMES = [
-    'tv-densenet121',
-    'tv-densenet169',
-    'tv-densenet201',
-    'tv-densenet161',
-]
+ENCODERS = densenet_encoders.keys()
 
 @pytest.mark.densenet
 @pytest.mark.encoders
-@pytest.mark.parametrize('name', NAMES)
+@pytest.mark.parametrize('name', ENCODERS)
 def test_ResNetEncoder_CASE_creation(name):
     IN_CHANNELS = 3
     DEPTH = 5

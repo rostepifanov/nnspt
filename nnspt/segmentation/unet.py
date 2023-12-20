@@ -130,7 +130,7 @@ class Unet(SegmentationSingleHeadModel):
             in_channels=12,
             out_channels=2,
             depth=5,
-            encoder='resnet34',
+            encoder='tv-resnet34',
         ):
         """
             :args:

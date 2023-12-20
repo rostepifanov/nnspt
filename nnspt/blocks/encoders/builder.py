@@ -35,7 +35,7 @@ class Encoder(object):
 
         node.weight = nn.parameter.Parameter(nweight)
 
-    def __call__(self, in_channels=3, depth=5, name='resnet34'):
+    def __call__(self, in_channels=3, depth=5, name='tv-resnet34'):
         """
             :args:
                 in_channels (int): number of channels of input tensor

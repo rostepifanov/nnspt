@@ -4,24 +4,20 @@ import torch
 
 from nnspt.blocks.encoders import Encoder
 from nnspt.segmentation.unet import Unet
+from nnspt.blocks.encoders.builder import nnspt_encoders
 
-ENCODERS = [
-    'tv-resnet18',
-    'tv-resnet34',
-    'tv-resnet50',
-    'tv-resnet101',
-    'tv-resnet152',
-    'tv-resnext50_32x4d',
-    'tv-resnext101_32x4d',
-    'tv-resnext101_32x8d',
-    'tv-resnext101_32x16d',
-    'tv-resnext101_32x32d',
-    'tv-resnext101_32x48d',
-    'tv-densenet121',
-    'tv-densenet169',
-    'tv-densenet201',
-    'tv-densenet161',
-]
+ENCODERS = nnspt_encoders.keys()
+
+@pytest.mark.unet
+@pytest.mark.segmentation
+def test_Unet_CASE_creation_AND_defaul_parameters():
+    model = Unet()
+
+@pytest.mark.unet
+@pytest.mark.segmentation
+def test_Unet_CASE_wrong_encoder_name():
+    with pytest.raises(KeyError) as e:
+        model = Unet(encoder='wrong_name')
 
 @pytest.mark.unet
 @pytest.mark.segmentation

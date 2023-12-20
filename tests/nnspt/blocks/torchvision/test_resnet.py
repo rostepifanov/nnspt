@@ -3,24 +3,13 @@ import pytest
 import torch
 
 from nnspt.blocks.encoders import Encoder
+from nnspt.blocks.encoders.torchvision import resnet_encoders
 
-NAMES = [
-    'tv-resnet18',
-    'tv-resnet34',
-    'tv-resnet50',
-    'tv-resnet101',
-    'tv-resnet152',
-    'tv-resnext50_32x4d',
-    'tv-resnext101_32x4d',
-    'tv-resnext101_32x8d',
-    'tv-resnext101_32x16d',
-    'tv-resnext101_32x32d',
-    'tv-resnext101_32x48d',
-]
+ENCODERS = resnet_encoders.keys()
 
 @pytest.mark.resnet
 @pytest.mark.encoders
-@pytest.mark.parametrize('name', NAMES)
+@pytest.mark.parametrize('name', ENCODERS)
 def test_ResNetEncoder_CASE_creation(name):
     IN_CHANNELS = 3
     DEPTH = 5
