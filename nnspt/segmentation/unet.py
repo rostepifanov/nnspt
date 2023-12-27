@@ -150,11 +150,11 @@ class Unet(SegmentationSingleHeadModel):
         self.decoder = Decoder(
             nblocks=depth,
             echannels=self.encoder.out_channels[:0:-1],
-            dchannels=(256, 128, 64, 32, 16),
+            dchannels=self.encoder.out_channels[:0:-1],
         )
 
         self.head = SegmentationHead(
-            in_channels=16,
+            in_channels=self.encoder.out_channels[1],
             out_channels=out_channels,
             kernel_size=3,
         )
