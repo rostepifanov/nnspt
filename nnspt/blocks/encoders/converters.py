@@ -100,7 +100,7 @@ class Convertor1d(Convertor.__class__):
 
         state1d = OrderedDict()
 
-        state1d['weight'] = state2d['weight'].mean(dim=-1)
+        state1d['weight'] = state2d['weight'][:, :, :, 0]
 
         if 'bias' in state2d:
             state1d['bias'] = state2d['bias']
