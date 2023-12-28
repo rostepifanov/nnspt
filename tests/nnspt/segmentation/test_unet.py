@@ -25,7 +25,7 @@ def test_Unet_CASE_wrong_encoder_name():
 def test_Unet_CASE_creation(name):
     IN_CHANNELS = 12
     OUT_CHANNELS = 2
-    DEPTH = 5
+    DEPTH = 4
 
     model = Unet(
         in_channels=IN_CHANNELS,
