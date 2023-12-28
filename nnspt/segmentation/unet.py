@@ -33,6 +33,8 @@ class DecoderBlock(nn.Module):
             nn.ReLU(inplace=True),
         )
 
+        self.attention1 = nn.Identity()
+
         self.conv2 = nn.Sequential(
             nn.Conv1d(
                 in_channels=out_channels,
@@ -45,6 +47,8 @@ class DecoderBlock(nn.Module):
             nn.BatchNorm1d(out_channels),
             nn.ReLU(inplace=True),
         )
+
+        self.attention2 = nn.Identity()
 
     def forward(self, x, skip=None, shape=None):
         if shape is not None:
@@ -64,9 +68,11 @@ class DecoderBlock(nn.Module):
 
         if skip is not None:
             x = torch.cat([x, skip], dim=1)
+            x = self.attention1(x)
 
         x = self.conv1(x)
         x = self.conv2(x)
+        x = self.attention2(x)
 
         return x
 
