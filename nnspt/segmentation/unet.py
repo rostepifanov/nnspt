@@ -29,8 +29,8 @@ class DecoderBlock(nn.Module):
                 stride=1,
                 bias=False,
             ),
+            nn.BatchNorm1d(out_channels),
             nn.ReLU(inplace=True),
-            nn.BatchNorm1d(out_channels)
         )
 
         self.conv2 = nn.Sequential(
@@ -42,8 +42,8 @@ class DecoderBlock(nn.Module):
                 stride=1,
                 bias=False,
             ),
+            nn.BatchNorm1d(out_channels),
             nn.ReLU(inplace=True),
-            nn.BatchNorm1d(out_channels)
         )
 
     def forward(self, x, skip=None, shape=None):
@@ -76,20 +76,20 @@ class Decoder(nn.Module):
     def __init__(
             self,
             nblocks,
-            echannels,
-            dchannels
+            channels,
         ):
         """
             :args:
                 nblocks (int): depth of decoder
-                echannels (list of int): number of channels in encoder
-                dchannels (list of int): number of channels in decoder
+                channels (list of int): number of channels
         """
         super().__init__()
 
-        in_channels = (echannels[0], *dchannels[:-1])
-        skip_channels = (*echannels[1:], 0)
-        out_channels = dchannels[-nblocks:]
+        channels = channels[-nblocks:]
+
+        in_channels = (channels[0], *channels[:-1])
+        skip_channels = (*channels[1:], 0)
+        out_channels = channels
 
         blocks = []
 
@@ -149,8 +149,7 @@ class Unet(SegmentationSingleHeadModel):
 
         self.decoder = Decoder(
             nblocks=depth,
-            echannels=self.encoder.out_channels[:0:-1],
-            dchannels=self.encoder.out_channels[:0:-1],
+            channels=self.encoder.out_channels[:0:-1],
         )
 
         self.head = SegmentationHead(
