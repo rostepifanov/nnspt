@@ -1,11 +1,13 @@
 import torch, torch.nn as nn
 
 from nnspt.blocks.encoders.torchvision import *
+from nnspt.blocks.encoders.timm import *
 from nnspt.blocks.encoders.misc import __classinit
 
 nnspt_encoders = {}
 nnspt_encoders.update(resnet_encoders)
 nnspt_encoders.update(densenet_encoders)
+nnspt_encoders.update(efficientnet_encoders)
 
 @__classinit
 class Encoder(object):

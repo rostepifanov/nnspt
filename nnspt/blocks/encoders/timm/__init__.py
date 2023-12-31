@@ -1,0 +1,1 @@
+from nnspt.blocks.encoders.timm.efficientnet import efficientnet_encoders
