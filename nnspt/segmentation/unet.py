@@ -3,6 +3,28 @@ import torch, torch.nn as nn
 from nnspt.blocks import Encoder, SegmentationHead
 from nnspt.segmentation.base import SegmentationSingleHeadModel
 
+class SpatialChannelSqueezeExcitationBlock(nn.Module):
+    """Spatial and Channel 'Squeeze & Excitation' block
+    """
+    def __init__(self, in_channels, reduction=16):
+        super().__init__()
+
+        self.cSE = nn.Sequential(
+            nn.AdaptiveAvgPool1d(1),
+            nn.Conv1d(in_channels, in_channels // reduction, 1),
+            nn.ReLU(inplace=True),
+            nn.Conv1d(in_channels // reduction, in_channels, 1),
+            nn.Sigmoid(),
+        )
+
+        self.sSE = nn.Sequential(
+            nn.Conv1d(in_channels, 1, 1),
+            nn.Sigmoid()
+        )
+
+    def forward(self, x):
+        return x * self.cSE(x) + x * self.sSE(x)
+
 class DecoderBlock(nn.Module):
     """Unet decoder block
     """
@@ -20,6 +42,10 @@ class DecoderBlock(nn.Module):
         """
         super().__init__()
 
+        self.attention1 = SpatialChannelSqueezeExcitationBlock(
+            in_channels + skip_channels
+        )
+
         self.conv1 = nn.Sequential(
             nn.Conv1d(
                 in_channels=in_channels + skip_channels,
@@ -32,8 +58,6 @@ class DecoderBlock(nn.Module):
             nn.BatchNorm1d(out_channels),
             nn.ReLU(inplace=True),
         )
-
-        self.attention1 = nn.Identity()
 
         self.conv2 = nn.Sequential(
             nn.Conv1d(
@@ -48,7 +72,9 @@ class DecoderBlock(nn.Module):
             nn.ReLU(inplace=True),
         )
 
-        self.attention2 = nn.Identity()
+        self.attention2 = SpatialChannelSqueezeExcitationBlock(
+            out_channels
+        )
 
     def forward(self, x, skip=None, shape=None):
         if shape is not None:
