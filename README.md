@@ -59,7 +59,7 @@ model = Unet(encoder='tv-resnet34')
     | tv-resnext101_32x8d  | -       | 79.6M  |
     | tv-resnext101_32x16d | -       | 163.5M |
     | tv-resnext101_32x32d | -       | 352.6M |
-    | tv-resnext101_32x48d | -       | 570M   |
+    | tv-resnext101_32x48d | -       | 570.1M |
   </details>
 
   * <details> <summary>DenseNet</summary>
@@ -84,6 +84,8 @@ model = Unet(encoder='tv-resnet34')
     | timm-efficientnet-b5 | -       | 26.7M  |
     | timm-efficientnet-b6 | -       | 38.6M  |
     | timm-efficientnet-b7 | -       | 61.1M  |
+    | timm-efficientnet-b8 | -       | 81.2M  |
+    | timm-efficientnet-l2 | -       | 463.4M |
   </details>
 
   * <details> <summary>EfficientNetLite</summary>
@@ -95,6 +97,20 @@ model = Unet(encoder='tv-resnet34')
     | timm-efficientnet-lite2 | -       | 4.1M   |
     | timm-efficientnet-lite3 | -       | 6.1M   |
     | timm-efficientnet-lite4 | -       | 10.7M  |
+  </details>
+
+  * <details> <summary>EfficientNetV2</summary>
+
+    | Name                   | Weights | Params |
+    | ---:                   | :---:   | :---:  |
+    | timm-efficientnetv2-b0 | -       | 5.4M   |
+    | timm-efficientnetv2-b1 | -       | 6.3M   |
+    | timm-efficientnetv2-b2 | -       | 8.1M   |
+    | timm-efficientnetv2-b3 | -       | 12.1M  |
+    | timm-efficientnetv2-s  | -       | 19.1M  |
+    | timm-efficientnetv2-m  | -       | 50.8M  |
+    | timm-efficientnetv2-l  | -       | 113.6M |
+    | timm-efficientnetv2-xl | -       | 202.5M |
   </details>
 
 #### Pretraining
