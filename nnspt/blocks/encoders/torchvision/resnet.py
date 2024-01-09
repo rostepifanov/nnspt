@@ -3,7 +3,7 @@ import torch.nn as nn
 from torchvision.models.resnet import ResNet, BasicBlock, Bottleneck
 
 from nnspt.blocks.encoders.base import EncoderBase
-from nnspt.blocks.encoders.converters import Convertor1d
+from nnspt.blocks.encoders.converters import Converter1d
 
 class ResNetEncoder(ResNet, EncoderBase):
     """Builder for encoder from ResNet family such as ResNet, ResNeXt, and etc
@@ -26,7 +26,7 @@ class ResNetEncoder(ResNet, EncoderBase):
         del self.fc
         del self.avgpool
 
-        Convertor1d.convert(self)
+        Converter1d.convert(self)
 
     def get_stages(self):
         return [
