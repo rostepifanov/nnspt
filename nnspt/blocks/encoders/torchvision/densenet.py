@@ -3,7 +3,7 @@ import torch.nn as nn
 from torchvision.models.densenet import DenseNet
 
 from nnspt.blocks.encoders.base import EncoderBase
-from nnspt.blocks.encoders.converters import Convertor1d
+from nnspt.blocks.encoders.converters import Converter1d
 
 class _DenseNetTransition(nn.Module):
     def __init__(self, transition_):
@@ -42,7 +42,7 @@ class DenseNetEncoder(DenseNet, EncoderBase):
 
         del self.classifier
 
-        Convertor1d.convert(self)
+        Converter1d.convert(self)
 
     def get_stages(self):
         return [

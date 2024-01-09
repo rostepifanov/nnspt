@@ -3,7 +3,7 @@ import torch.nn as nn
 from timm.models.convnext import ConvNeXt
 
 from nnspt.blocks.encoders.base import EncoderBase
-from nnspt.blocks.encoders.converters import Convertor1d, ConvertorTimm
+from nnspt.blocks.encoders.converters import Converter1d, ConverterTimm
 
 class ConvNeXtEncoder(ConvNeXt, EncoderBase):
     """Builder for encoder from ConvNeXtEncoder family
@@ -25,8 +25,8 @@ class ConvNeXtEncoder(ConvNeXt, EncoderBase):
 
         del self.head
 
-        ConvertorTimm.convert(self)
-        Convertor1d.convert(self)
+        ConverterTimm.convert(self)
+        Converter1d.convert(self)
 
     def get_stages(self):
         return [

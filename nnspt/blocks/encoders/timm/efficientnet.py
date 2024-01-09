@@ -5,7 +5,7 @@ from timm.layers.activations import Swish
 from timm.models.efficientnet import EfficientNet, decode_arch_def, round_channels, default_cfgs
 
 from nnspt.blocks.encoders.base import EncoderBase
-from nnspt.blocks.encoders.converters import Convertor1d, ConvertorTimm
+from nnspt.blocks.encoders.converters import Converter1d, ConverterTimm
 
 def get_efficientnet_kwargs(channel_multiplier=1.0, depth_multiplier=1.0, drop_rate=0.2):
     """
@@ -126,8 +126,8 @@ class EfficientNetV1Encoder(EfficientNetEncoder):
         kwargs = get_efficientnet_kwargs(channel_multiplier, depth_multiplier, drop_rate)
         super().__init__(stage_idxs, out_channels, depth, **kwargs)
 
-        ConvertorTimm.convert(self)
-        Convertor1d.convert(self)
+        ConverterTimm.convert(self)
+        Converter1d.convert(self)
 
 class EfficientNetLiteEncoder(EfficientNetEncoder):
     """Builder for EfficientNetLite encoders
@@ -144,8 +144,8 @@ class EfficientNetLiteEncoder(EfficientNetEncoder):
         kwargs = gen_efficientnet_lite_kwargs(channel_multiplier, depth_multiplier, drop_rate)
         super().__init__(stage_idxs, out_channels, depth, **kwargs)
 
-        ConvertorTimm.convert(self)
-        Convertor1d.convert(self)
+        ConverterTimm.convert(self)
+        Converter1d.convert(self)
 
 efficientnet_encoders = {
     'timm-efficientnet-b0': {
