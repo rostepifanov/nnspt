@@ -41,53 +41,60 @@ model = Unet(encoder='tv-resnet34')
 
   * <details> <summary>ResNet</summary>
 
-      - tv-resnet18
-      - tv-resnet34
-      - tv-resnet50
-      - tv-resnet101
-      - tv-resnet152
+    | Name        | Weights | Params |
+    | ---:        | :---:   | :---:  |
+    |tv-resnet18  | -       | 3.8M   |
+    |tv-resnet34  | -       | 7.2M   |
+    |tv-resnet50  | -       | 15.9M  |
+    |tv-resnet101 | -       | 28.2M  |
+    |tv-resnet152 | -       | 38.4M  |
   </details>
 
   * <details> <summary>ResNeXt</summary>
 
-      - tv-resnext50_32x4d
-      - tv-resnext101_32x4d
-      - tv-resnext101_32x8d
-      - tv-resnext101_32x16d
-      - tv-resnext101_32x32d
-      - tv-resnext101_32x48d
+    | Name                 | Weights | Params |
+    | ---:                 | :---:   | :---:  |
+    | tv-resnext50_32x4d   | -       | 22M    |
+    | tv-resnext101_32x4d  | -       | 40.3M  |
+    | tv-resnext101_32x8d  | -       | 79.6M  |
+    | tv-resnext101_32x16d | -       | 163.5M |
+    | tv-resnext101_32x32d | -       | 352.6M |
+    | tv-resnext101_32x48d | -       | 570M   |
   </details>
 
   * <details> <summary>DenseNet</summary>
 
-      - tv-densenet121
-      - tv-densenet169
-      - tv-densenet201
-      - tv-densenet161
-
+    | Name           | Weights | Params |
+    | ---:           | :---:   | :---:  |
+    | tv-densenet121 | -       | 5.5M   |
+    | tv-densenet169 | -       | 10.4M  |
+    | tv-densenet201 | -       | 15.6M  |
+    | tv-densenet161 | -       | 22.1M  |
   </details>
 
   * <details> <summary>EfficientNetV1</summary>
 
-      - timm-efficientnet-b0
-      - timm-efficientnet-b1
-      - timm-efficientnet-b2
-      - timm-efficientnet-b3
-      - timm-efficientnet-b4
-      - timm-efficientnet-b5
-      - timm-efficientnet-b6
-      - timm-efficientnet-b7
-
+    | Name                 | Weights | Params |
+    | ---:                 | :---:   | :---:  |
+    | timm-efficientnet-b0 | -       | 3.4M   |
+    | timm-efficientnet-b1 | -       | 5.9M   |
+    | timm-efficientnet-b2 | -       | 6.9M   |
+    | timm-efficientnet-b3 | -       | 9.8M   |
+    | timm-efficientnet-b4 | -       | 16.3M  |
+    | timm-efficientnet-b5 | -       | 26.7M  |
+    | timm-efficientnet-b6 | -       | 38.6M  |
+    | timm-efficientnet-b7 | -       | 61.1M  |
   </details>
 
   * <details> <summary>EfficientNetLite</summary>
 
-      - timm-efficientnet-lite0
-      - timm-efficientnet-lite1
-      - timm-efficientnet-lite2
-      - timm-efficientnet-lite3
-      - timm-efficientnet-lite4
-
+    | Name                    | Weights | Params |
+    | ---:                    | :---:   | :---:  |
+    | timm-efficientnet-lite0 | -       | 2.8M   |
+    | timm-efficientnet-lite1 | -       | 3.5M   |
+    | timm-efficientnet-lite2 | -       | 4.1M   |
+    | timm-efficientnet-lite3 | -       | 6.1M   |
+    | timm-efficientnet-lite4 | -       | 10.7M  |
   </details>
 
 #### Pretraining
