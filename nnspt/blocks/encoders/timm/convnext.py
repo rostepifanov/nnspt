@@ -56,4 +56,41 @@ class ConvNeXtEncoder(ConvNeXt, EncoderBase):
         return features
 
 convnext_encoders = {
+    'timm-convnext-atto': {
+        'encoder': ConvNeXtEncoder,
+        'params': {
+            'out_channels': (3, 40, 40, 80, 160, 320),
+            'depths': (2, 2, 6, 2),
+            'dims': (40, 80, 160, 320),
+            'conv_mlp': True,
+        },
+    },
+   'timm-convnext-femto': {
+        'encoder': ConvNeXtEncoder,
+        'params': {
+            'out_channels': (3, 48, 48, 96, 192, 384),
+            'depths': (2, 2, 6, 2),
+            'dims': (48, 96, 192, 384),
+            'conv_mlp': True,
+        },
+    },
+    'timm-convnext-pico': {
+        'encoder': ConvNeXtEncoder,
+        'params': {
+            'out_channels': (3, 64, 64, 128, 256, 512),
+            'depths': (2, 2, 6, 2),
+            'dims': (64, 128, 256, 512),
+            'conv_mlp': True,
+        },
+    },
+    'timm-convnextv2-atto': {
+        'encoder': ConvNeXtEncoder,
+        'params': {
+            'out_channels': (3, 40, 40, 80, 160, 320),
+            'depths': (2, 2, 6, 2),
+            'dims': (40, 80, 160, 320),
+            'use_grn': True,
+            'ls_init_value': None,
+        },
+    },
 }

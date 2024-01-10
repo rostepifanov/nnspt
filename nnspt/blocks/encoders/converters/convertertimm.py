@@ -12,17 +12,52 @@ class ConverterTimm(Converter.__class__):
     @classmethod
     def _init__class(cls):
         cls._registry = {
+            timm.layers.grn.GlobalResponseNorm: getattr(cls, '_func_timm_GlobalResponseNorm'),
+            timm.layers.norm.LayerNorm2d: getattr(cls, '_func_timm_LayerNorm2d'),
             timm.layers.norm_act.BatchNormAct2d: getattr(cls, '_func_timm_BatchNormAct2d'),
             timm.models._efficientnet_blocks.SqueezeExcite: getattr(cls, '_func_timm_SqueezeExcite'),
+            timm.models.convnext.ConvNeXtBlock: getattr(cls, '_func_timm_ConvNeXtBlock'),
         }
 
         return cls()
+
+    @classmethod
+    def _func_timm_GlobalResponseNorm(cls, layer):
+        if layer.channel_dim == -1:
+            layer.spatial_dim = (1, )
+            layer.wb_shape = (1, 1, -1)
+        else:
+            layer.spatial_dim = (2, )
+            layer.wb_shape = (1, -1, 1)
+
+        return layer
+
+    @staticmethod
+    def _timm_layernorm2dforward(self, x):
+        """
+            :NOTE:
+                it is a copy of timm.layers.norm.LayerNorm2d function with correct operations under dims
+        """
+        x = x.permute(0, 2, 1)
+        if self._fast_norm:
+            x = timm.layers.fast_norm.fast_layer_norm(x, self.normalized_shape, self.weight, self.bias, self.eps)
+        else:
+            x = nn.functional.layer_norm(x, self.normalized_shape, self.weight, self.bias, self.eps)
+        x = x.permute(0, 2, 1)
+
+        return x
+
+    @classmethod
+    def _func_timm_LayerNorm2d(cls, layer):
+        layer.forward = types.MethodType(cls._timm_layernorm2dforward, layer)
+
+        return layer
 
     @staticmethod
     def _timm_batchnormact2d_forward(self, x):
         """
             :NOTE:
-                it is a copy of timm function without shape assert
+                it is a copy of timm.layers.norm_act.BatchNormAct2d function without shape assert
         """
         # exponential_average_factor is set to self.momentum
         # (when it is available) only so that it gets updated
@@ -82,7 +117,7 @@ class ConverterTimm(Converter.__class__):
     def _timm_squeezeexcite_forward(self, x):
         """
             :NOTE:
-                it is a copy of timm function with correct operations under dims
+                it is a copy of timm.layers.squeeze_excite.SEModule function with correct operations under dims
         """
         x_se = x.mean((2, ), keepdim=True)
         x_se = self.conv_reduce(x_se)
@@ -93,5 +128,33 @@ class ConverterTimm(Converter.__class__):
     @classmethod
     def _func_timm_SqueezeExcite(cls, layer):
         layer.forward = types.MethodType(cls._timm_squeezeexcite_forward, layer)
+
+        return layer
+
+    @staticmethod
+    def _func_timm_convnextblockforward(self, x):
+        """
+            :NOTE:
+                it is a copy of timm.models.convnext.ConvNeXtBlock function with correct operations under dims
+        """
+        shortcut = x
+        x = self.conv_dw(x)
+        if self.use_conv_mlp:
+            x = self.norm(x)
+            x = self.mlp(x)
+        else:
+            x = x.permute(0, 2, 1)
+            x = self.norm(x)
+            x = self.mlp(x)
+            x = x.permute(0, 2, 1)
+        if self.gamma is not None:
+            x = x.mul(self.gamma.reshape(1, -1, 1))
+
+        x = self.drop_path(x) + self.shortcut(shortcut)
+        return x
+
+    @classmethod
+    def _func_timm_ConvNeXtBlock(cls, layer):
+        layer.forward = types.MethodType(cls._func_timm_convnextblockforward, layer)
 
         return layer
