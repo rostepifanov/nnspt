@@ -11,9 +11,9 @@ class SpatialChannelSqueezeExcitationBlock(nn.Module):
 
         self.cSE = nn.Sequential(
             nn.AdaptiveAvgPool1d(1),
-            nn.Conv1d(in_channels, in_channels // reduction, 1),
+            nn.Conv1d(in_channels, (in_channels + reduction - 1) // reduction, 1),
             nn.ReLU(inplace=True),
-            nn.Conv1d(in_channels // reduction, in_channels, 1),
+            nn.Conv1d((in_channels + reduction - 1) // reduction, in_channels, 1),
             nn.Sigmoid(),
         )
 

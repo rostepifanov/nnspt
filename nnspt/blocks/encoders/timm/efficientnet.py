@@ -2,7 +2,7 @@ import torch.nn as nn
 
 from functools import partial
 from timm.layers.activations import Swish
-from timm.models.efficientnet import EfficientNet, decode_arch_def, round_channels, default_cfgs
+from timm.models.efficientnet import EfficientNet, decode_arch_def, round_channels
 
 from nnspt.blocks.encoders.base import EncoderBase
 from nnspt.blocks.encoders.converters import Converter1d, ConverterTimm

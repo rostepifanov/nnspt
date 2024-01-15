@@ -53,7 +53,7 @@ model = Unet(encoder='tv-resnet34')
   * <details> <summary>ResNeXt</summary>
 
     | Name                 | Weights | Params |
-    | ---:                 | :---:   | :---:  |
+    | :----                | :---:   | :---:  |
     | tv-resnext50_32x4d   | -       | 22M    |
     | tv-resnext101_32x4d  | -       | 40.3M  |
     | tv-resnext101_32x8d  | -       | 79.6M  |
@@ -65,7 +65,7 @@ model = Unet(encoder='tv-resnet34')
   * <details> <summary>DenseNet</summary>
 
     | Name           | Weights | Params |
-    | ---:           | :---:   | :---:  |
+    | :----          | :---:   | :---:  |
     | tv-densenet121 | -       | 5.5M   |
     | tv-densenet169 | -       | 10.4M  |
     | tv-densenet201 | -       | 15.6M  |
@@ -75,7 +75,7 @@ model = Unet(encoder='tv-resnet34')
   * <details> <summary>EfficientNetV1</summary>
 
     | Name                 | Weights | Params |
-    | ---:                 | :---:   | :---:  |
+    | :----                | :---:   | :---:  |
     | timm-efficientnet-b0 | -       | 3.4M   |
     | timm-efficientnet-b1 | -       | 5.9M   |
     | timm-efficientnet-b2 | -       | 6.9M   |
@@ -91,7 +91,7 @@ model = Unet(encoder='tv-resnet34')
   * <details> <summary>EfficientNetLite</summary>
 
     | Name                    | Weights | Params |
-    | ---:                    | :---:   | :---:  |
+    | :----                   | :---:   | :---:  |
     | timm-efficientnet-lite0 | -       | 2.8M   |
     | timm-efficientnet-lite1 | -       | 3.5M   |
     | timm-efficientnet-lite2 | -       | 4.1M   |
@@ -102,7 +102,7 @@ model = Unet(encoder='tv-resnet34')
   * <details> <summary>EfficientNetV2</summary>
 
     | Name                   | Weights | Params |
-    | ---:                   | :---:   | :---:  |
+    | :----                  | :---:   | :---:  |
     | timm-efficientnetv2-b0 | -       | 5.4M   |
     | timm-efficientnetv2-b1 | -       | 6.3M   |
     | timm-efficientnetv2-b2 | -       | 8.1M   |
@@ -111,6 +111,19 @@ model = Unet(encoder='tv-resnet34')
     | timm-efficientnetv2-m  | -       | 50.8M  |
     | timm-efficientnetv2-l  | -       | 113.6M |
     | timm-efficientnetv2-xl | -       | 202.5M |
+  </details>
+
+  * <details> <summary>MobileNetV2</summary>
+
+    | Name                 | Weights | Params |
+    | :----                | :---:   | :---:  |
+    | timm-mobilenetv2-035 | -       | 0.2M   |
+    | timm-mobilenetv2-050 | -       | 0.4M   |
+    | timm-mobilenetv2-075 | -       | 1.1M   |
+    | timm-mobilenetv2-100 | -       | 1.7M   |
+    | timm-mobilenetv2-140 | -       | 3.4M   |
+
+    NOTE: digits in name mean **channel_multiplier**
   </details>
 
 #### Pretraining

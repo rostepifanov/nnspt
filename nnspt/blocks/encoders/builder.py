@@ -9,6 +9,7 @@ nnspt_encoders.update(resnet_encoders)
 nnspt_encoders.update(densenet_encoders)
 nnspt_encoders.update(efficientnet_encoders)
 nnspt_encoders.update(convnext_encoders)
+nnspt_encoders.update(mobilenet_encoders)
 
 @__classinit
 class Encoder(object):
