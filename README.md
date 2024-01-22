@@ -41,13 +41,13 @@ model = Unet(encoder='tv-resnet34')
 
   * <details> <summary>ResNet</summary>
 
-    | Name        | Weights | Params |
-    | ---:        | :---:   | :---:  |
-    |tv-resnet18  | -       | 3.8M   |
-    |tv-resnet34  | -       | 7.2M   |
-    |tv-resnet50  | -       | 15.9M  |
-    |tv-resnet101 | -       | 28.2M  |
-    |tv-resnet152 | -       | 38.4M  |
+    | Name         | Weights | Params |
+    | :----        | :---:   | :---:  |
+    | tv-resnet18  | -       | 3.8M   |
+    | tv-resnet34  | -       | 7.2M   |
+    | tv-resnet50  | -       | 15.9M  |
+    | tv-resnet101 | -       | 28.2M  |
+    | tv-resnet152 | -       | 38.4M  |
   </details>
 
   * <details> <summary>ResNeXt</summary>
@@ -133,6 +133,7 @@ model = Unet(encoder='tv-resnet34')
 #### Segmentation
 
   * Unet [[paper](https://arxiv.org/abs/1505.04597)]
+  * Unetpp [[paper](https://arxiv.org/abs/1807.10165)]
 
 ## Citing
 
