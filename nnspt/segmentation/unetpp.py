@@ -1,10 +1,10 @@
 import torch, torch.nn as nn
 
 from nnspt.blocks import Encoder, SegmentationHead
-from nnspt.segmentation.unet import DecoderBlock
+from nnspt.segmentation.unet import UnetDecoderBlock
 from nnspt.segmentation.base import SegmentationSingleHeadModel
 
-class Decoder(nn.Module):
+class UnetppDecoder(nn.Module):
     """Unetpp decoder
 
         :NOTE:
@@ -53,7 +53,7 @@ class Decoder(nn.Module):
 
                 skips[f's_{depth}_{layer}'] = out_
 
-                block = DecoderBlock(in_, skip_, out_)
+                block = UnetDecoderBlock(in_, skip_, out_)
                 blocks[f'b_{depth}_{layer}'] = block
 
             if idx == 0:
@@ -120,7 +120,7 @@ class Unetpp(SegmentationSingleHeadModel):
             name=encoder,
         )
 
-        self.decoder = Decoder(
+        self.decoder = UnetppDecoder(
             nblocks=depth,
             channels=self.encoder.out_channels[:0:-1],
         )
