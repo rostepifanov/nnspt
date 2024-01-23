@@ -33,6 +33,10 @@ class Decoder(nn.Module):
         out_channels = channels
 
         blocks = {}
+        skips = {}
+
+        for idx in range(nblocks):
+            skips[f's_{idx+1}_{idx}'] = channels[-idx-1]
 
         for idx in range(nblocks):
             for jdx in range(nblocks - idx):
@@ -42,6 +46,12 @@ class Decoder(nn.Module):
                 in_ = in_channels[-depth-1]
                 skip_ = skip_channels[-depth-1]
                 out_ = out_channels[-depth-1]
+
+                if depth > 0:
+                    for sdx in range(layer-depth):
+                        skip_ += skips[f's_{depth}_{layer-sdx-2}']
+
+                skips[f's_{depth}_{layer}'] = out_
 
                 block = DecoderBlock(in_, skip_, out_)
                 blocks[f'b_{depth}_{layer}'] = block
@@ -74,7 +84,7 @@ class Decoder(nn.Module):
                     skip = None
                     shape = xs[f'x_{0}_{-1}'].shape
                 else:
-                    skip = xs[f'x_{depth}_{layer-1}']
+                    skip = torch.concat([ xs[f'x_{depth}_{layer-sdx-1}'] for sdx in range(layer-depth+1) ], axis=1)
                     shape = xs[f'x_{depth}_{layer-1}'].shape
 
                 x = xs[f'x_{depth+1}_{layer}']
