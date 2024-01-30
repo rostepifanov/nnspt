@@ -2,7 +2,7 @@ import torch, torch.nn as nn
 
 from nnspt.blocks import Encoder
 
-class DecoderBlock(nn.Module):
+class AutoencoderDecoderBlock(nn.Module):
     """Autoencoder decoder block
     """
     def __init__(
@@ -44,27 +44,14 @@ class DecoderBlock(nn.Module):
         )
 
     def forward(self, x, shape=None):
-        if shape is not None:
-            scale_factor = []
-
-            getdim = lambda vector, axis : vector.shape[axis]
-
-            naxis = len(x.shape)
-            for axis in range(2, naxis):
-                scale_factor.append(shape[axis]/getdim(x, axis))
-
-            scale_factor = tuple(scale_factor)
-        else:
-            scale_factor = 2
-
-        x = nn.functional.interpolate(x, scale_factor=scale_factor, mode='linear')
+        x = nn.functional.interpolate(x, size=shape[2:], mode='linear')
 
         x = self.conv1(x)
         x = self.conv2(x)
 
         return x
 
-class Decoder(nn.Module):
+class AutoencoderDecoder(nn.Module):
     """Autoencoder decoder
     """
     def __init__(
@@ -85,7 +72,7 @@ class Decoder(nn.Module):
         blocks = []
 
         for in_, out_ in zip(in_channels, out_channels):
-            block = DecoderBlock(in_, out_)
+            block = AutoencoderDecoderBlock(in_, out_)
             blocks.append(block)
 
         self.blocks = nn.ModuleList(blocks)
@@ -129,7 +116,7 @@ class Autoencoder(nn.Module):
             name=encoder,
         )
 
-        self.decoder = Decoder(
+        self.decoder = AutoencoderDecoder(
             nblocks=depth,
             channels=self.encoder.out_channels[::-1],
         )

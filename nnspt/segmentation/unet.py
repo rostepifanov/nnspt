@@ -55,20 +55,7 @@ class UnetDecoderBlock(nn.Module):
         )
 
     def forward(self, x, skip=None, shape=None):
-        if shape is not None:
-            scale_factor = []
-
-            getdim = lambda vector, axis : vector.shape[axis]
-
-            naxis = len(x.shape)
-            for axis in range(2, naxis):
-                scale_factor.append(shape[axis]/getdim(x, axis))
-
-            scale_factor = tuple(scale_factor)
-        else:
-            scale_factor = 2
-
-        x = nn.functional.interpolate(x, scale_factor=scale_factor, mode='nearest')
+        x = nn.functional.interpolate(x, size=shape[2:], mode='nearest')
 
         if skip is not None:
             x = torch.cat([x, skip], dim=1)
