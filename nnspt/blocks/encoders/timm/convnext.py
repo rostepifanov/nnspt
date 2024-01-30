@@ -93,4 +93,24 @@ convnext_encoders = {
             'ls_init_value': None,
         },
     },
+    'timm-convnextv2-femto': {
+        'encoder': ConvNeXtEncoder,
+        'params': {
+            'out_channels': (3, 48, 48, 96, 192, 384),
+            'depths': (2, 2, 6, 2),
+            'dims': (48, 96, 192, 384),
+            'use_grn': True,
+            'ls_init_value': None
+        },
+    },
+    'timm-convnextv2-pico': {
+        'encoder': ConvNeXtEncoder,
+        'params': {
+            'out_channels': (3, 64, 64, 128, 256, 512),
+            'depths': (2, 2, 6, 2),
+            'dims': (64, 128, 256, 512),
+            'use_grn': True,
+            'ls_init_value': None
+        },
+    },
 }
