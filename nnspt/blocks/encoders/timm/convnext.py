@@ -83,6 +83,69 @@ convnext_encoders = {
             'conv_mlp': True,
         },
     },
+    'timm-convnext-nano': {
+        'encoder': ConvNeXtEncoder,
+        'params': {
+            'out_channels': (3, 80, 80, 160, 320, 640),
+            'depths': (2, 2, 8, 2),
+            'dims': (80, 160, 320, 640),
+            'conv_mlp': True,
+        },
+    },
+    'timm-convnext-tiny': {
+        'encoder': ConvNeXtEncoder,
+        'params': {
+            'out_channels': (3, 96, 96, 192, 384, 768),
+            'depths': (3, 3, 9, 3),
+            'dims': (96, 192, 384, 768),
+            'conv_mlp': True,
+        },
+    },
+    'timm-convnext-small': {
+        'encoder': ConvNeXtEncoder,
+        'params': {
+            'out_channels': (3, 96, 96, 192, 384, 768),
+            'depths': (3, 3, 27, 3),
+            'dims': (96, 192, 384, 768),
+            'conv_mlp': True,
+        },
+    },
+    'timm-convnext-base': {
+        'encoder': ConvNeXtEncoder,
+        'params': {
+            'out_channels': (3, 128, 128, 256, 512, 1024),
+            'depths': (3, 3, 27, 3),
+            'dims': (128, 256, 512, 1024),
+            'conv_mlp': True,
+        },
+    },
+    'timm-convnext-large': {
+        'encoder': ConvNeXtEncoder,
+        'params': {
+            'out_channels': (3, 192, 192, 384, 768, 1536),
+            'depths': (3, 3, 27, 3),
+            'dims': (192, 384, 768, 1536),
+            'conv_mlp': True,
+        },
+    },
+    'timm-convnext-xlarge': {
+        'encoder': ConvNeXtEncoder,
+        'params': {
+            'out_channels': (3, 256, 256, 512, 1024, 2048),
+            'depths': (3, 3, 27, 3),
+            'dims': (256, 512, 1024, 2048),
+            'conv_mlp': True,
+        },
+    },
+    'timm-convnext-xxlarge': {
+        'encoder': ConvNeXtEncoder,
+        'params': {
+            'out_channels': (3, 384, 384, 768, 1536, 3072),
+            'depths': (3, 4, 30, 3),
+            'dims': (384, 768, 1536, 3072),
+            'conv_mlp': True,
+        },
+    },
     'timm-convnextv2-atto': {
         'encoder': ConvNeXtEncoder,
         'params': {
