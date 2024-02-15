@@ -10,6 +10,7 @@ NNSPT is a Python library for neural network signal processing on PyTorch.
 - [Authors](#authors)
 - [Installation](#installation)
 - [A simple example](#a-simple-example)
+- [Advanced examples](#advanced-examples)
 - [Available components](#available-components)
 - [Citing](#citing)
 
@@ -35,6 +36,10 @@ from nnspt.segmentation.unet import Unet
 
 model = Unet(encoder='tv-resnet34')
 ```
+
+## Advanced examples
+
+ - [Kaggle notebook](https://www.kaggle.com/code/rostepifanov/nnspt-eeg) GAL EEG competition
 
 ## Available components
 #### Encoders
@@ -124,6 +129,31 @@ model = Unet(encoder='tv-resnet34')
     | timm-mobilenetv2-140 | -       | 3.4M   |
 
     NOTE: digits in name mean **channel_multiplier**
+  </details>
+
+  * <details> <summary>ConvNeXt</summary>
+
+    | Name                  | Weights | Params |
+    | :----                 | :---:   | :---:  |
+    | timm-convnext-atto    | -       | 3.1M   |
+    | timm-convnext-femto   | -       | 4.5M   |
+    | timm-convnext-pico    | -       | 8.1M   |
+    | timm-convnext-nano    | -       | 14.2M  |
+    | timm-convnext-tiny    | -       | 26.7M  |
+    | timm-convnext-small   | -       | 48.1M  |
+    | timm-convnext-base    | -       | 85.4M  |
+    | timm-convnext-large   | -       | 191.9M |
+    | timm-convnext-xlarge  | -       | 341.1M |
+    | timm-convnext-xxlarge | -       | -M     |
+  </details>
+
+  * <details> <summary>ConvNeXtV2</summary>
+
+    | Name                    | Weights | Params |
+    | :----                   | :---:   | :---:  |
+    | timm-convnextv2-atto    | -       | 3.1M   |
+    | timm-convnextv2-femto   | -       | 4.5M   |
+    | timm-convnextv2-pico    | -       | 8.1M   |
   </details>
 
 #### Pretraining
