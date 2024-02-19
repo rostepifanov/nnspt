@@ -39,7 +39,8 @@ model = Unet(encoder='tv-resnet34')
 
 ## Advanced examples
 
- - [Kaggle notebook](https://www.kaggle.com/code/rostepifanov/nnspt-eeg) GAL EEG competition
+ - [Kaggle notebook](https://www.kaggle.com/code/rostepifanov/nnspt-eeg-1d-cnn) GAL EEG competition
+ - [Kaggle notebook](https://www.kaggle.com/code/rostepifanov/nnspt-emg-1d-cnn) Handwritten digit classification by EMG record
 
 ## Available components
 #### Encoders
