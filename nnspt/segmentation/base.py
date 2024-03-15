@@ -21,10 +21,12 @@ class SegmentationSingleHeadModel(nn.Module):
     def forward(self, x):
         """
             :args:
-                x (torch.tensor[batch_size, in_channels, length]): input tensor
+                x: [batch_size, in_channels, length] torch.tensor
+                    input tensor
 
             :return:
-                torch.tensor[batch_size, out_channels, length]
+                output: [batch_size, out_channels, length] torch.tensor
+                    logits of class probabilities
         """
 
         f = self.encoder(x)

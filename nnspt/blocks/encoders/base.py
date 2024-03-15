@@ -5,6 +5,7 @@ class EncoderBase(object):
     def out_channels(self):
         """
             :return:
-                the number of channels in forward path in encoder
+                output: list of int
+                    number of channels in forward path in encoder
         """
         return self.out_channels_[:self.depth + 1]

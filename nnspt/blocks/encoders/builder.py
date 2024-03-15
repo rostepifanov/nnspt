@@ -44,12 +44,16 @@ class Encoder(object):
     def __call__(self, in_channels=3, depth=5, name='tv-resnet34'):
         """
             :args:
-                in_channels (int): number of channels of input tensor
-                depth (int): depth of encoder
-                name (str): name of encoder to create
+                in_channels: int
+                    number of channels of input tensor
+                depth: int
+                    depth of encoder
+                name: str, optional
+                    name of encoder to create
 
             :return:
-                created encoder
+                output: nnspt.EncoderBase
+                    created encoder
         """
         try:
             type = nnspt_encoders[name]['encoder']

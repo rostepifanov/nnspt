@@ -13,8 +13,10 @@ class ConvNeXtEncoder(ConvNeXt, EncoderBase):
             :NOTE:
 
             :args:
-                out_channels (list of int): channel number of output tensors, including intermediate ones
-                depth (int): depth of encoder
+                out_channels: list of int
+                    channel number of output tensors, including intermediate ones
+                depth: int
+                    depth of encoder
         """
         super().__init__(**kwargs)
 
@@ -41,10 +43,12 @@ class ConvNeXtEncoder(ConvNeXt, EncoderBase):
     def forward(self, x):
         """
             :args:
-                x (torch.tensor[batch_size, in_channels, length]): input tensor
+                x: [batch_size, in_channels, length] torch.tensor
+                    input tensor
 
             :return:
-                list of torch.tensor[batch_size, schannels, slength]
+                output: list of [batch_size, schannels, slength] torch.tensor
+                    latent representations of input
         """
         stages = self.get_stages()
         features = []

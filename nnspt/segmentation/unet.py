@@ -14,9 +14,12 @@ class UnetDecoderBlock(nn.Module):
         ):
         """
             :args:
-                in_channels (int): number of input channel
-                skip_channels (int): number of skip channel
-                out_channels (int): number of output channel
+                in_channels: int
+                    number of input channel
+                skip_channels: int
+                    number of skip channel
+                out_channels: int
+                    number of output channel
         """
         super().__init__()
 
@@ -77,8 +80,10 @@ class UnetDecoder(nn.Module):
         ):
         """
             :args:
-                nblocks (int): depth of decoder
-                channels (list of int): number of channels
+                nblocks: int
+                    depth of decoder
+                channels: list of int
+                    number of channels
         """
         super().__init__()
 
@@ -99,7 +104,8 @@ class UnetDecoder(nn.Module):
     def forward(self, *feats):
         """
             :args:
-                feats (list of torch.tensor): list of latent features
+                feats: list of torch.tensor
+                    list of latent features
         """
         feats = feats[::-1]
 
@@ -131,10 +137,14 @@ class Unet(SegmentationSingleHeadModel):
         ):
         """
             :args:
-                in_channels (int): number of channels of input tensor
-                out_channels (int): number of channels of output tensor
-                depth (int): depth of model
-                name (str): architecture of encoder in model
+                in_channels: int
+                    number of channels of input tensor
+                out_channels: int
+                    number of channels of output tensor
+                depth: int, optional
+                    depth of model
+                encoder: str, optional
+                    architecture of encoder in model
         """
         super().__init__()
 

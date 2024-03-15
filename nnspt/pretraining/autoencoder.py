@@ -12,8 +12,10 @@ class AutoencoderDecoderBlock(nn.Module):
         ):
         """
             :args:
-                in_channels (int): number of input channel
-                out_channels (int): number of output channel
+                in_channels: int
+                    number of input channel
+                out_channels: int
+                    number of output channel
         """
         super().__init__()
 
@@ -61,8 +63,10 @@ class AutoencoderDecoder(nn.Module):
         ):
         """
             :args:
-                nblocks (int): depth of decoder
-                channels (list of int): number of channels in decoder
+                nblocks: int
+                    depth of decoder
+                channels: list of int
+                    number of channels in decoder
         """
         super().__init__()
 
@@ -104,9 +108,12 @@ class Autoencoder(nn.Module):
         ):
         """
             :args:
-                nchannels (int): number of channels of input tensor
-                depth (int): depth of model
-                name (str): architecture of encoder in model
+                nchannels: int
+                    number of channels of input tensor
+                depth: int, optional
+                    depth of model
+                name: str, optional
+                    architecture of encoder in model
         """
         super().__init__()
 
@@ -142,10 +149,12 @@ class Autoencoder(nn.Module):
     def forward(self, x):
         """
             :args:
-                x (torch.tensor[batch_size, in_channels, length]): input tensor
+                x: [batch_size, nchannels, length] torch.tensor
+                    input tensor
 
             :return:
-                torch.tensor[batch_size, out_channels, length]
+                output: [batch_size, nchannels, length] torch.tensor
+                    reconstructed input
         """
 
         f = self.encoder(x)

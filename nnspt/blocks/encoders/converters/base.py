@@ -8,7 +8,8 @@ class Converter(object):
     def _init__class(cls):
         """
             :return:
-                instance of class, similar to singleton pattern
+                output: Converter
+                    instance of class, similar to singleton pattern
         """
         cls._registry = { }
 
@@ -20,7 +21,8 @@ class Converter(object):
                 conversion takes inplace
 
             :args:
-                model (torch.nn.Module): PyTorch model
+                model: torch.nn.Module
+                    PyTorch model
         """
         def __is_generator_empty(generator):
             try:
@@ -45,10 +47,12 @@ class Converter(object):
     def __call__(self, layer):
         """
             :args:
-                layer (torch.nn.Module): PyTorch layer to convert
+                layer: torch.nn.Module
+                    PyTorch layer to convert
 
             :return:
-                converted layer
+                output: torch.nn.Module
+                    converted layer
         """
         if type(layer) in self._registry:
             return self._registry[type(layer)](layer)

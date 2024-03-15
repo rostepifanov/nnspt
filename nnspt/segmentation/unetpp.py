@@ -21,8 +21,10 @@ class UnetppDecoder(nn.Module):
         ):
         """
             :args:
-                nblocks (int): depth of decoder
-                channels (list of int): number of channels
+                nblocks: int
+                    depth of decoder
+                channels: list of int
+                    number of channels
         """
         super().__init__()
 
@@ -66,7 +68,8 @@ class UnetppDecoder(nn.Module):
     def forward(self, *feats):
         """
             :args:
-                feats (list of torch.tensor): list of latent features
+                feats: list of torch.tensor
+                    list of latent features
         """
         xs = dict()
 
@@ -107,10 +110,14 @@ class Unetpp(SegmentationSingleHeadModel):
     ):
         """
             :args:
-                in_channels (int): number of channels of input tensor
-                out_channels (int): number of channels of output tensor
-                depth (int): depth of model
-                name (str): architecture of encoder in model
+                in_channels: int
+                    number of channels of input tensor
+                out_channels: int
+                    number of channels of output tensor
+                depth: int
+                    depth of model
+                name: str
+                    architecture of encoder in model
         """
         super().__init__()
 
