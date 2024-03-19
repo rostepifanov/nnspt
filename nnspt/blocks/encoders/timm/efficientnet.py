@@ -559,6 +559,51 @@ efficientnet_encoders = {
             'depth_multiplier': 1.4,
         },
     },
+    'timm-efficientnetv2-b4': {
+        'encoder': EfficientNetV2BaseEncoder,
+        'params': {
+            'out_channels': (3, 48, 48, 64, 160, 272),
+            'stage_idxs': (2, 3, 5),
+            'channel_multiplier': 1.4,
+            'depth_multiplier': 1.8,
+        },
+    },
+    'timm-efficientnetv2-b5': {
+        'encoder': EfficientNetV2BaseEncoder,
+        'params': {
+            'out_channels': (3, 48, 48, 80, 176, 304),
+            'stage_idxs': (2, 3, 5),
+            'channel_multiplier': 1.6,
+            'depth_multiplier': 2.2,
+        },
+    },
+    'timm-efficientnetv2-b6': {
+        'encoder': EfficientNetV2BaseEncoder,
+        'params': {
+            'out_channels': (3, 56, 56, 88, 200, 344),
+            'stage_idxs': (2, 3, 5),
+            'channel_multiplier': 1.8,
+            'depth_multiplier': 2.6,
+        },
+    },
+    'timm-efficientnetv2-b7': {
+        'encoder': EfficientNetV2BaseEncoder,
+        'params': {
+            'out_channels': (3, 64, 64, 96, 224, 384),
+            'stage_idxs': (2, 3, 5),
+            'channel_multiplier': 2.0,
+            'depth_multiplier': 3.1,
+        },
+    },
+    'timm-efficientnetv2-b8': {
+        'encoder': EfficientNetV2BaseEncoder,
+        'params': {
+            'out_channels': (3, 72, 72, 104, 248, 424),
+            'stage_idxs': (2, 3, 5),
+            'channel_multiplier': 2.2,
+            'depth_multiplier': 3.6,
+        },
+    },
     'timm-efficientnetv2-s': {
         'encoder': EfficientNetV2SmallEncoder,
         'params': {
