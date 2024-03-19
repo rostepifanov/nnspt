@@ -58,5 +58,5 @@ setuptools.setup(
         f'Programming Language :: Python :: 3.{i}'
             for i in range(get_python_min_version()[1], 12)
     ],
-    keywords='nnspt, augmentation, deep learning',
+    keywords='nnspt, deep learning',
 )
