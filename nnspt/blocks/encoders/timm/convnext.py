@@ -167,7 +167,7 @@ convnext_encoders = {
             'depths': (2, 2, 6, 2),
             'dims': (48, 96, 192, 384),
             'use_grn': True,
-            'ls_init_value': None
+            'ls_init_value': None,
         },
     },
     'timm-convnextv2-pico': {
@@ -177,7 +177,47 @@ convnext_encoders = {
             'depths': (2, 2, 6, 2),
             'dims': (64, 128, 256, 512),
             'use_grn': True,
-            'ls_init_value': None
+            'ls_init_value': None,
+        },
+    },
+    'timm-convnextv2-nano': {
+        'encoder': ConvNeXtEncoder,
+        'params': {
+            'out_channels': (3, 80, 80, 160, 320, 640),
+            'depths': (2, 2, 8, 2),
+            'dims': (80, 160, 320, 640),
+            'use_grn': True,
+            'ls_init_value': None,
+    },
+    },
+    'timm-convnextv2-tiny': {
+        'encoder': ConvNeXtEncoder,
+        'params': {
+            'out_channels': (3, 96, 96, 192, 384, 768),
+            'depths': (3, 3, 9, 3),
+            'dims': (96, 192, 384, 768),
+            'use_grn': True,
+            'ls_init_value': None,
+        },
+    },
+    'timm-convnextv2-small': {
+        'encoder': ConvNeXtEncoder,
+        'params': {
+            'out_channels': (3, 96, 96, 192, 384, 768),
+            'depths': (3, 3, 27, 3),
+            'dims': (96, 192, 384, 768),
+            'use_grn': True,
+            'ls_init_value': None,
+        },
+    },
+    'timm-convnextv2-base': {
+        'encoder': ConvNeXtEncoder,
+        'params': {
+            'out_channels': (3, 128, 128, 256, 512, 1024),
+            'depths': (3, 3, 27, 3),
+            'dims': (128, 256, 512, 1024),
+            'use_grn': True,
+            'ls_init_value': None,
         },
     },
 }
