@@ -126,7 +126,7 @@ class UnetDecoder(nn.Module):
 
 class Unet(SegmentationSingleHeadModel):
     """Unet is a fully convolution neural network for semantic segmentation.
-        See details in https://arxiv.org/abs/1505.04597
+       See details in https://arxiv.org/abs/1505.04597
     """
     def __init__( 
             self,
