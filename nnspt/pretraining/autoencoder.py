@@ -112,7 +112,7 @@ class Autoencoder(nn.Module):
                     number of channels of input tensor
                 depth: int, optional
                     depth of model
-                name: str, optional
+                encoder: str, optional
                     architecture of encoder in model
         """
         super().__init__()
@@ -156,7 +156,6 @@ class Autoencoder(nn.Module):
                 output: [batch_size, nchannels, length] torch.tensor
                     reconstructed input
         """
-
         f = self.encoder(x)
         x = self.decoder(*f)
 
